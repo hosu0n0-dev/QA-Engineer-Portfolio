@@ -1,36 +1,128 @@
-# QA-Engineer-Portfolio
-🛠️ SW QA &amp; Automotive Test Automation: OTA, ECU Flashing, and E2E Testing using Python, Selenium, &amp; CAPL
-=======
->>>>>>> 86a8ffd (Add DLT log image)
-# 🚗 Automotive eCall Test Automation Portfolio
+🚗 Automotive SW QA Automation Portfolio
+📌 Overview
 
-> Requirements-based End-to-End Vehicle QA Automation Project
+차량 Telematics 시스템(eCall 포함)에 대한
+Spec 기반 검증 및 테스트 자동화 프로젝트입니다.
 
-## Overview
-이 저장소는 차량 QA 관점에서 수행한 테스트 중 대표 시나리오를 **실행 가능한 코드 + 포트폴리오 문서** 형태로 정리한 통합 프로젝트입니다.
+실제 차량과 유사한 Test Bench 환경에서
+다양한 시나리오(정상/예외)를 기반으로 검증을 수행하고,
+로그 분석 및 자동화를 통해 품질 안정성을 확보했습니다.
 
-## Included Projects
-- **TC1**: ADB + DLT 기반 Button eCall 자동화
-- **TC2**: ADB + DLT + Selenium(BASE) 기반 Button eCall + Backend 검증
-- **TC3**: CANoe / CAPL 기반 24시간 mileage 반복 테스트 템플릿
+🔍 Test Scope
 
-## Highlights
-- Requirements-based Test Design
-- End-to-End Validation
-- 24h Repeat Automation Structure
-- Summary / CycleSummary / Results Reporting
-- Traceability-oriented Documentation
+eCall (Button eCall / Automatic eCall)
 
-## Install
-```bash
-pip install -r requirements.txt
-```
+Power Mode / Sudden Voltage Drop
 
-## Notes
-- TC1/TC2는 `config.py`의 환경값 수정이 필요합니다.
-- TC2의 Selenium locator와 BASE URL은 예시값입니다.
-- TC3는 보안 대응용 placeholder 템플릿입니다.
-<<<<<<< HEAD
-=======
->>>>>>> c646379 (Docs: add project README and environment setup)
->>>>>>> 86a8ffd (Add DLT log image)
+Remote Service / Car Sharing
+
+OTA / ECU Flashing
+
+AP Reset / NAD Reset
+
+System Infrastructure / C2X
+
+🛠️ Responsibilities
+
+Spec / Requirement 기반 Test Case 설계
+
+정상 / 예외 시나리오 포함 검증 커버리지 확대
+
+ECU-TEST 기반 테스트 자동화 구축
+
+반복 테스트 자동화 및 Regression Test 환경 구성
+
+DLT / QXDM / Wireshark 로그 분석
+
+필드 이슈 재현 및 원인 분석
+
+결함 관리 (재현 절차 / 발생 조건 / 기대 vs 실제 결과 정리)
+
+Test Result Report 작성 및 고객 대응
+
+개발자 및 유관부서 협업을 통한 품질 개선
+
+⚙️ Test Environment
+
+Test Bench 기반 차량 유사 환경 구성
+
+ECU 및 계측 장비 연동 테스트
+
+DLT Receiver 기반 로그 수집 및 분석
+
+🧪 Test Categories
+
+Power & Voltage
+
+Sudden Voltage Drop
+
+Power Mode
+
+Telematics
+
+eCall (Button / Automatic)
+
+Remote Service
+
+Car Sharing
+
+System
+
+OTA
+
+ECU Flashing
+
+AP Reset / NAD Reset
+
+Environment
+
+Temperature
+
+System Infrastructure
+
+Communication
+
+C2X
+
+🔄 Test Automation Flow
+
+Test Case 실행 (ADB / ECU-TEST 기반)
+
+eCall Trigger (Button / Automatic)
+
+DLT Log 실시간 수집
+
+eCall Status 확인 (1 → 2 → 3 → 0)
+
+결과 판별 (Pass / Fail)
+
+로그 기반 원인 분석
+
+결과 Excel 리포트 자동 생성
+
+📊 DLT Log Example
+
+eCall 상태 변화 확인 (Trigger → Connect → Disconnect → Expire)
+
+
+
+
+💡 Key Achievements
+
+기존 수동 테스트 → 자동화 전환으로 테스트 효율 향상
+
+Spec 기반 Test Case 확장 → 검증 커버리지 개선
+
+로그 기반 분석 체계 구축 → 이슈 재현 시간 단축
+
+반복 테스트 자동화 → Regression Test 안정화
+
+🚀 Skills & Tools
+
+Automation: Python, ECU-TEST
+
+Log Analysis: DLT, QXDM, Wireshark
+
+Tools: ADB, TeraTerm
+
+Domain: Automotive Telematics, eCall, OTA

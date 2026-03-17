@@ -1,3 +1,7 @@
+# QA-Engineer-Portfolio
+🛠️ SW QA &amp; Automotive Test Automation: OTA, ECU Flashing, and E2E Testing using Python, Selenium, &amp; CAPL
+=======
+>>>>>>> 86a8ffd (Add DLT log image)
 # 🚗 Automotive eCall Test Automation Portfolio
 
 > Requirements-based End-to-End Vehicle QA Automation Project
@@ -26,3 +30,7 @@ pip install -r requirements.txt
 - TC1/TC2는 `config.py`의 환경값 수정이 필요합니다.
 - TC2의 Selenium locator와 BASE URL은 예시값입니다.
 - TC3는 보안 대응용 placeholder 템플릿입니다.
+<<<<<<< HEAD
+=======
+>>>>>>> c646379 (Docs: add project README and environment setup)
+>>>>>>> 86a8ffd (Add DLT log image)

@@ -1,0 +1,67 @@
+/* =========================================================
+   TC3 - CANoe Panel + CAPL Mileage 24h Repeat Test Template
+   Replace placeholder signals / sysvars with your real names
+   ========================================================= */
+variables
+{
+  msTimer tCycle;
+  msTimer tVerify;
+  msTimer tTimeout;
+  long gCycle = 0;
+  long gPass  = 0;
+  long gFail  = 0;
+  dword gStartMs = 0;
+  int   gRunning = 0;
+  int   gWaitingResponse = 0;
+  int gTargetMileage = 0;
+  int gActualMileage = -1;
+  char gRemark[128];
+  dword gLogFile = 0;
+}
+int makeRandomMileage() { return rand() % 101; }
+void saveCycleLog(char resultText[], char remarkText[])
+{
+  char line[256];
+  if (gLogFile == 0) return;
+  snprintf(line, elcount(line), "%d,%d,%d,%s,%s\r\n", gCycle, gTargetMileage, gActualMileage, resultText, remarkText);
+  filePutString(line, gLogFile);
+}
+on start
+{
+  gCycle = 0; gPass = 0; gFail = 0; gRunning = 1; gStartMs = timeNow();
+  gLogFile = openFileWrite("C:\\Temp\\tc3_mileage_log.csv", 0);
+  if (gLogFile != 0) { filePutString("Cycle,Target,Actual,Result,Remark\r\n", gLogFile); }
+  setTimer(tCycle, 1000);
+}
+on timer tCycle
+{
+  // Replace this block with your real WAVE / BCP request flow
+  gCycle++;
+  gTargetMileage = makeRandomMileage();
+  gActualMileage = -1;
+  gWaitingResponse = 1;
+  setTimer(tVerify, 1500);
+  setTimer(tTimeout, 3000);
+}
+on timer tVerify
+{
+  if (!gRunning || !gWaitingResponse) return;
+  // Replace with actual value read
+  if (gActualMileage == gTargetMileage)
+  {
+    gPass++;
+    gWaitingResponse = 0;
+    cancelTimer(tTimeout);
+    saveCycleLog("PASS", "Mileage changed successfully");
+    setTimer(tCycle, 10000);
+  }
+}
+on timer tTimeout
+{
+  if (!gRunning || !gWaitingResponse) return;
+  gFail++;
+  gWaitingResponse = 0;
+  snprintf(gRemark, elcount(gRemark), "Timeout/Mismatch target=%d actual=%d", gTargetMileage, gActualMileage);
+  saveCycleLog("FAIL", gRemark);
+  setTimer(tCycle, 10000);
+}
